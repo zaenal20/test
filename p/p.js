@@ -30,7 +30,7 @@ function connectWebSocket() {
             console.log('Subscribed..');
         } else if (data.op === 'block' && data.x) {
             const nextBlockHex = Buffer.from(`${data.x.height + 1}.dogemap`, 'utf-8').toString('hex');
-            const command = `cd ../inscription-wallet && ` +
+            const command = `cd ../ && ` +
                 `node . mint ${address} "text/plain;charset=utf-8" ${nextBlockHex}`;
             console.log(`New block ${data.x.height}, next block ${data.x.height + 1}`);
             exec(command, (error, res, err) => {
